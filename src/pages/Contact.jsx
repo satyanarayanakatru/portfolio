@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Typography,
@@ -17,6 +17,11 @@ function Contact() {
   });
 
   const [success, setSuccess] = useState(false);
+  const nameInputRef = useRef(null);
+
+  useEffect(() => {
+    nameInputRef.current.focus();
+  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -72,6 +77,7 @@ function Contact() {
               value={formData.name}
               onChange={handleChange}
               margin="normal"
+              inputRef={nameInputRef}
             />
 
             <TextField

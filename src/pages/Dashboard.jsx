@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import {
   Box,
   Typography,
@@ -8,21 +8,11 @@ import {
   CardContent,
   Grid,
 } from "@mui/material";
+import { initialState, productReducer } from "../reducers/projectReducer";
 
 function Dashboard() {
   const [projectName, setProjectName] = useState("");
-
-  const [projects, setProjects] = useState([
-    {
-      id: 1,
-      title: "Food Delivery App",
-    },
-    {
-      id: 2,
-      title: "Chat Application",
-    },
-  ]);
-
+  const [state, dispatch] = useReducer(productReducer, initialState);
   const [editId, setEditId] = useState(null);
 
   const handleAddOrUpdate = () => {
@@ -34,20 +24,23 @@ function Dashboard() {
     }
 
     if (editId) {
-      setProjects(
-        projects.map((project) =>
-          project.id === editId ? { ...project, title: projectName } : project,
-        ),
-      );
+      dispatch({
+        type: "UPDATE_PROJECT",
+        payload: {
+          id: editId,
+          title: projectName,
+        },
+      });
 
       setEditId(null);
     } else {
-      const newProject = {
-        id: Date.now(),
-        title: projectName,
-      };
-
-      setProjects([...projects, newProject]);
+      dispatch({
+        type: "ADD_PROJECT",
+        payload: {
+          id: Date.now(),
+          title: projectName,
+        },
+      });
     }
 
     setProjectName("");
@@ -56,10 +49,6 @@ function Dashboard() {
   const handleEdit = (project) => {
     setProjectName(project.title);
     setEditId(project.id);
-  };
-
-  const handleDelete = (id) => {
-    setProjects(projects.filter((project) => project.id !== id));
   };
 
   return (
@@ -91,7 +80,7 @@ function Dashboard() {
       </Box>
 
       <Grid container spacing={3}>
-        {projects.map((project) => (
+        {state.projects.map((project) => (
           <Grid item xs={12} md={4} key={project.id}>
             <Card>
               <CardContent>
@@ -114,7 +103,9 @@ function Dashboard() {
                   <Button
                     variant="contained"
                     color="error"
-                    onClick={() => handleDelete(project.id)}
+                    onClick={() => {
+                      dispatch({ type: "DELETE_PROJECT", payload: project.id });
+                    }}
                   >
                     Delete
                   </Button>
