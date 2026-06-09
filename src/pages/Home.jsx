@@ -8,176 +8,128 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
+import styles from "./Home.module.css";
 import profileImage from "../assets/profile.png";
 
 const stats = [
-  {
-    title: "10+",
-    subtitle: "Projects Completed",
-  },
-  {
-    title: "React",
-    subtitle: "Frontend Development",
-  },
-  {
-    title: "React Native",
-    subtitle: "Mobile Apps",
-  },
+  { title: "10+", subtitle: "Premium Apps Shipped" },
+  { title: "React Ecosystem", subtitle: "Frontend Architecture" },
+  { title: "React Native", subtitle: "Cross-Platform Mobile" },
 ];
 
 const services = [
   {
-    title: "Frontend Development",
+    title: "Frontend Engineering",
     description:
-      "Building responsive and modern web applications using React and JavaScript.",
+      "Crafting beautiful, accessible, production-grade UI systems built for extreme scalability.",
   },
   {
-    title: "React Native Apps",
+    title: "Mobile Deployments",
     description:
-      "Creating cross-platform mobile applications with excellent user experience.",
+      "Native performance deployment structures tailored efficiently using React Native frameworks.",
   },
   {
-    title: "UI Development",
-    description: "Developing clean, reusable, and scalable user interfaces.",
+    title: "UI/UX System Design",
+    description:
+      "Atomic architecture systems with highly maintainable design patterns and variables.",
   },
 ];
 
-function Home() {
+const Home = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <Box>
-      {/* Hero Section */}
-      <Container maxWidth="lg">
-        <Grid
-          container
-          spacing={6}
-          alignItems="center"
-          sx={{
-            minHeight: "85vh",
-            py: 6,
-          }}
-        >
+    <Box className={styles.wrapper}>
+      <motion.div className={styles.progressBar} style={{ scaleX }} />
+
+      {/* Ambient background blur circles */}
+      <div className={styles.blob1} />
+      <div className={styles.blob2} />
+
+      {/* HERO SECTION */}
+      <Container maxWidth="lg" className={styles.hero}>
+        <Grid container spacing={6} alignItems="center">
           <Grid item xs={12} md={6}>
             <motion.div
-              initial={{ opacity: 0, x: -80 }}
+              initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
             >
-              <Typography
-                variant="h2"
-                fontWeight="bold"
-                sx={{
-                  mb: 2,
-                }}
-              >
-                Hi, I'm
-                <br />
-                Katru Satyanarayana
+              <Typography className={styles.badge}>
+                Available For New Projects
+              </Typography>
+              <Typography className={styles.title}>
+                Building Digital <br />
+                <span>Experiences</span>
+              </Typography>
+              <Typography className={styles.subtitle}>
+                Katru Satyanarayana — React Engineer
+              </Typography>
+              <Typography className={styles.desc}>
+                Specialized in deploying responsive, production-ready interfaces
+                using scalable architectural methodologies.
               </Typography>
 
-              <Typography
-                variant="h5"
-                color="primary"
-                sx={{
-                  mb: 3,
-                }}
-              >
-                React JS Developer
-              </Typography>
-
-              <Typography
-                color="text.secondary"
-                sx={{
-                  mb: 4,
-                  fontSize: "1.1rem",
-                }}
-              >
-                Passionate about building modern, responsive, and scalable
-                applications using React, React Native, JavaScript, and modern
-                frontend technologies.
-              </Typography>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  gap: 2,
-                  flexWrap: "wrap",
-                }}
-              >
+              <div className={styles.btnGroup}>
                 <Button
+                  variant="contained"
                   component={Link}
                   to="/projects"
-                  variant="contained"
-                  size="large"
+                  className={styles.primaryBtn}
                 >
-                  View Projects
+                  Explore Work
                 </Button>
-
-                <Button variant="outlined" size="large">
-                  Download Resume
+                <Button
+                  variant="outlined"
+                  component={Link}
+                  to="/contact"
+                  className={styles.outlineBtn}
+                >
+                  Let's Connect
                 </Button>
-              </Box>
+              </div>
             </motion.div>
           </Grid>
 
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} className={styles.imageContainer}>
             <motion.div
-              initial={{ opacity: 0, x: 80 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <Box
-                component="img"
-                src={profileImage}
-                alt="Profile"
-                sx={{
-                  width: {
-                    xs: 250,
-                    md: 380,
-                  },
-                  height: {
-                    xs: 250,
-                    md: 380,
-                  },
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  display: "block",
-                  margin: "0 auto",
-                  boxShadow: 8,
-                }}
-              />
+              <div className={styles.profileCard}>
+                <img
+                  src={profileImage}
+                  alt="Katru Satyanarayana"
+                  className={styles.profile}
+                />
+              </div>
             </motion.div>
           </Grid>
         </Grid>
       </Container>
 
-      {/* Stats Section */}
-      <Container maxWidth="lg">
-        <Grid container spacing={3}>
-          {stats.map((item, index) => (
-            <Grid item xs={12} md={4} key={index}>
+      {/* STATS SECTION */}
+      <Container maxWidth="lg" className={styles.section}>
+        <Grid container spacing={4}>
+          {stats.map((item, i) => (
+            <Grid item xs={12} md={4} key={i}>
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.2,
-                }}
                 viewport={{ once: true }}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.4 }}
               >
-                <Card>
-                  <CardContent
-                    sx={{
-                      textAlign: "center",
-                      py: 4,
-                    }}
-                  >
-                    <Typography variant="h4" color="primary" fontWeight="bold">
+                <Card className={styles.card}>
+                  <CardContent>
+                    <Typography className={styles.statNumber}>
                       {item.title}
                     </Typography>
-
-                    <Typography color="text.secondary">
+                    <Typography className={styles.statText}>
                       {item.subtitle}
                     </Typography>
                   </CardContent>
@@ -188,56 +140,20 @@ function Home() {
         </Grid>
       </Container>
 
-      {/* Services Section */}
-      <Container
-        maxWidth="lg"
-        sx={{
-          py: 10,
-        }}
-      >
-        <Typography
-          variant="h3"
-          textAlign="center"
-          fontWeight="bold"
-          gutterBottom
-        >
-          What I Do
-        </Typography>
-
-        <Typography
-          textAlign="center"
-          color="text.secondary"
-          sx={{
-            mb: 5,
-          }}
-        >
-          Services and technologies I work with.
-        </Typography>
-
-        <Grid container spacing={3}>
-          {services.map((service, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.2,
-                }}
-                viewport={{ once: true }}
-              >
-                <Card
-                  sx={{
-                    height: "100%",
-                  }}
-                >
+      {/* SERVICES SECTION */}
+      <Container maxWidth="lg" className={styles.section}>
+        <Typography className={styles.sectionTitle}>What I Do</Typography>
+        <Grid container spacing={4}>
+          {services.map((s, i) => (
+            <Grid item xs={12} md={4} key={i}>
+              <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
+                <Card className={styles.cardHover}>
                   <CardContent>
-                    <Typography variant="h6" fontWeight="bold" gutterBottom>
-                      {service.title}
+                    <Typography className={styles.serviceTitle}>
+                      {s.title}
                     </Typography>
-
-                    <Typography color="text.secondary">
-                      {service.description}
+                    <Typography className={styles.serviceDesc}>
+                      {s.description}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -247,45 +163,24 @@ function Home() {
         </Grid>
       </Container>
 
-      {/* CTA Section */}
-      <Box
-        sx={{
-          py: 10,
-          textAlign: "center",
-        }}
-      >
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <Typography variant="h3" fontWeight="bold" gutterBottom>
-            Let's Work Together
+      {/* CALL TO ACTION */}
+      <Container maxWidth="md" className={styles.ctaWrapper}>
+        <Box className={styles.cta}>
+          <Typography className={styles.ctaTitle}>
+            Let's Build Something Exceptional
           </Typography>
-
-          <Typography
-            color="text.secondary"
-            sx={{
-              mb: 4,
-            }}
-          >
-            Interested in collaborating on a project or discussing new
-            opportunities?
-          </Typography>
-
           <Button
+            variant="contained"
             component={Link}
             to="/contact"
-            variant="contained"
-            size="large"
+            className={styles.ctaBtn}
           >
-            Contact Me
+            Get In Touch
           </Button>
-        </motion.div>
-      </Box>
+        </Box>
+      </Container>
     </Box>
   );
-}
+};
 
 export default Home;

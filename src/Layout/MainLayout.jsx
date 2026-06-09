@@ -2,19 +2,25 @@ import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { ThemeContext } from "../context/ThemeContext";
 import { Box } from "@mui/material";
+import Footer from "../components/Footer";
 
 function MainLayout({ children }) {
   const { theme } = useContext(ThemeContext);
+
   return (
     <Box
       sx={{
         minHeight: "100vh",
-        backgroundColor: theme === "light" ? "#f5f5f5" : "#121212",
-        color: theme === "light" ? "#000" : "#fff",
+        backgroundColor: theme === "light" ? "#f8fafc" : "#0f172a",
+        color: theme === "light" ? "#1e293b" : "#f8fafc",
+        transition: "background-color 0.4s ease, color 0.4s ease",
       }}
     >
       <Navbar />
-      <main>{children}</main>
+      <Box component="main" sx={{ pt: "80px", flexGrow: 1 }}>
+        {children}
+      </Box>
+      <Footer />
     </Box>
   );
 }

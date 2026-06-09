@@ -1,16 +1,172 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px 80px;
+  justify-content: space-between;
+  padding: 20px 6%;
+  box-sizing: border-box;
+  background: var(--nav-bg, rgba(255, 255, 255, 0.4));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.05));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.navStyle > ul {
+.scrolled {
+  padding: 14px 6%;
+  background: var(--nav-scrolled, rgba(255, 255, 255, 0.75));
+  box-shadow: 0 10px 30px var(--shadow-color, rgba(0, 0, 0, 0.03));
+}
+
+/* Theme variables setup */
+:global([data-theme="light"]) {
+  --nav-bg: rgba(255, 255, 255, 0.45);
+  --nav-scrolled: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(0, 0, 0, 0.06);
+  --shadow-color: rgba(0, 0, 0, 0.04);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-main: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.7);
+}
+
+:global([data-theme="dark"]) {
+  --nav-bg: rgba(15, 23, 42, 0.45);
+  --nav-scrolled: rgba(15, 23, 42, 0.8);
+  --border-color: rgba(255, 255, 255, 0.06);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --bg-main: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.5);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 2100; /* Keeps logo on top if needed */
+}
+
+.desktopNav ul {
   display: flex;
+  gap: 32px;
   list-style: none;
-  gap: 30px;
 }
 
-.navStyle > ul > li > a {
+.desktopNav a {
   text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 8px 4px;
+}
+
+.desktopNav a:hover,
+.activeLink {
+  color: var(--text-main) !important;
+}
+
+.desktopNav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+  transition: width 0.3s ease;
+}
+
+.desktopNav a:hover::after,
+.activeLink::after {
+  width: 100%;
+}
+
+/* ACTIONS - Crucial fix to put actions over overlay */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 2500;
+}
+
+.themeBtn,
+.menuBtn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.themeBtn:hover {
+  transform: scale(1.15) rotate(15deg);
+}
+
+.menuBtn {
+  display: none;
+}
+
+/* Close icon color explicitly handled to prevent blending into backdrops */
+.closeIcon {
+  color: var(--text-main);
+}
+
+/* MOBILE OVERLAY WRAPPER */
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-main);
+  z-index: 1000; /* Stays beneath actions (.actions has 2500) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobileOverlay ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+  padding: 0;
+}
+
+.mobileOverlay a {
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.mobileOverlay a:hover,
+.mobileOverlay :global(.active) {
+  color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+  .menuBtn {
+    display: block;
+  }
 }

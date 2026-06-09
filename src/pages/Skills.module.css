@@ -1,0 +1,154 @@
+.wrapper {
+  position: relative;
+  overflow-x: hidden;
+  background: var(--bg-main);
+  min-height: 100vh;
+  transition: background-color 0.4s ease;
+}
+
+.contentContainer {
+  padding-top: 140px;
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Atmospheric Glowing Accents */
+.blob1,
+.blob2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  filter: blur(140px);
+  opacity: 0.16;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob1 {
+  background: radial-gradient(#4f46e5, transparent 70%);
+  top: 5%;
+  left: -5%;
+}
+
+.blob2 {
+  background: radial-gradient(#06b6d4, transparent 70%);
+  bottom: 10%;
+  right: -5%;
+}
+
+/* HEADER ELEMENTS */
+.headerSection {
+  margin-bottom: 50px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: #4f46e5;
+  border-radius: 30px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  margin-bottom: 16px !important;
+}
+
+.title {
+  font-size: 48px !important;
+  font-weight: 800 !important;
+  color: var(--text-main);
+  margin-bottom: 16px !important;
+}
+
+.desc {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: var(--text-muted);
+  max-width: 650px;
+}
+
+/* CATEGORY CARDS STYLE */
+.skillCard {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 24px !important;
+  box-shadow: none !important;
+  height: 100%;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+.skillCard:hover {
+  border-color: rgba(79, 70, 229, 0.3) !important;
+  box-shadow: 0 12px 30px var(--shadow-color) !important;
+}
+
+.cardContent {
+  padding: 32px !important;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 12px;
+  color: #4f46e5;
+  font-size: 20px;
+}
+
+.categoryTitle {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--text-main);
+}
+
+/* CHIPS PILLS GRID CONTAINER */
+.pillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skillPill {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: default;
+  transition: border-color 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+}
+
+.skillCard:hover .skillPill {
+  border-color: var(--border-color);
+}
+
+.skillPill:hover {
+  border-color: #06b6d4 !important;
+  background: var(--card-bg);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 36px !important;
+  }
+  .cardContent {
+    padding: 24px !important;
+  }
+}

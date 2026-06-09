@@ -1,0 +1,184 @@
+.wrapper {
+  position: relative;
+  overflow-x: hidden;
+  background: var(--bg-main);
+  min-height: 100vh;
+  transition: background-color 0.4s ease;
+}
+
+.contentContainer {
+  padding-top: 140px;
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Background Glowing Accents */
+.blob1,
+.blob2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  filter: blur(140px);
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob1 {
+  background: radial-gradient(#4f46e5, transparent 70%);
+  top: 10%;
+  right: -10%;
+}
+
+.blob2 {
+  background: radial-gradient(#06b6d4, transparent 70%);
+  bottom: 5%;
+  left: -10%;
+}
+
+.sectionMargin {
+  margin-bottom: 70px !important;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: #4f46e5;
+  border-radius: 30px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  margin-bottom: 16px !important;
+}
+
+.title {
+  font-size: 48px !important;
+  font-weight: 800 !important;
+  color: var(--text-main);
+  margin-bottom: 20px !important;
+}
+
+.bioText {
+  font-size: 18px !important;
+  line-height: 1.7 !important;
+  color: var(--text-muted);
+  max-width: 850px;
+}
+
+.bioText span {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.sectionTitle {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: var(--text-main);
+  margin-bottom: 30px !important;
+}
+
+/* SLEEK TIMELINE DESIGN */
+.timeline {
+  position: relative;
+  border-left: 2px solid var(--border-color);
+  padding-left: 24px;
+  margin-left: 8px;
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -33px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  border: 3px solid var(--bg-main);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.duration {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #06b6d4;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.degree {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--text-main);
+  margin-top: 4px !important;
+}
+
+.institution {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: var(--text-muted);
+  margin-bottom: 8px !important;
+}
+
+.details {
+  font-size: 14px !important;
+  color: var(--text-muted);
+  line-height: 1.5 !important;
+}
+
+/* MODERN SKILLS PILLS */
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skillPill {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 10px 20px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: default;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+/* CARDS CONFIGURATION */
+.infoCard {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  height: 100%;
+}
+
+.cardContent {
+  padding: 32px !important;
+}
+
+.cardHeaderTitle {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--text-main);
+  margin-bottom: 12px !important;
+}
+
+.cardDescription {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: var(--text-muted);
+}

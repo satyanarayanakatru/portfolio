@@ -1,0 +1,242 @@
+.wrapper {
+  position: relative;
+  overflow-x: hidden;
+  background: var(--bg-main);
+  min-height: 100vh;
+  transition: background-color 0.4s ease;
+}
+
+.contentContainer {
+  padding-top: 140px;
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Background Atmosphere Lights */
+.blob1,
+.blob2 {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  filter: blur(150px);
+  opacity: 0.14;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob1 {
+  background: radial-gradient(#4f46e5, transparent 70%);
+  top: 5%;
+  right: -5%;
+}
+
+.blob2 {
+  background: radial-gradient(#06b6d4, transparent 70%);
+  bottom: 10%;
+  left: -5%;
+}
+
+/* HEADER STYLE SHEET */
+.headerSection {
+  margin-bottom: 40px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: #4f46e5;
+  border-radius: 30px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  margin-bottom: 16px !important;
+}
+
+.title {
+  font-size: 48px !important;
+  font-weight: 800 !important;
+  color: var(--text-main);
+  margin-bottom: 16px !important;
+}
+
+.desc {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+/* CARDS STRUCTURAL MATRIX GRID */
+.gridWrapper {
+  position: relative;
+}
+
+.motionCardContainer {
+  height: 100%;
+  display: flex;
+}
+
+.userCard {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 24px !important;
+  box-shadow: none !important;
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+.userCard:hover {
+  border-color: rgba(6, 182, 212, 0.3) !important;
+  box-shadow: 0 12px 35px var(--shadow-color) !important;
+}
+
+.cardContent {
+  padding: 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+/* PROFILE HEADER AREA COMPONENTS */
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 18px;
+}
+
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.1),
+    rgba(6, 182, 212, 0.1)
+  );
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  border-radius: 14px;
+  color: #4f46e5;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--text-main);
+  line-height: 1.2 !important;
+}
+
+.usernameTag {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* INFORMATION INTERACTIVE MATRIX LINK METRICS */
+.infoFields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-grow: 1; /* Pushes the company metadata cleanly to the card bottom layout */
+}
+
+.fieldRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fieldIcon {
+  font-size: 16px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.fieldValue {
+  font-size: 14px;
+  color: var(--text-main);
+  font-weight: 500;
+  word-break: break-all;
+}
+
+/* FIXED PLACEMENT FOOTER SEGMENTS */
+.companyFooter {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-top: auto;
+}
+
+.companyLabel {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.companyValue {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--text-main);
+  margin-top: 1px !important;
+}
+
+/* REFINED STATE RENDERING UTILITIES */
+.loadingWrapper,
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 16px;
+  text-align: center;
+  background: var(--bg-main);
+}
+
+.spinner {
+  color: #4f46e5 !important;
+}
+
+.loadingText {
+  color: var(--text-muted);
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+}
+
+.errorIcon {
+  font-size: 48px;
+  color: #ef4444;
+}
+
+.errorText {
+  color: var(--text-main);
+  font-weight: 700 !important;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 36px !important;
+  }
+  .cardContent {
+    padding: 20px !important;
+  }
+}

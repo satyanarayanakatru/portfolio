@@ -1,0 +1,154 @@
+.wrapper {
+  background: transparent;
+  width: 100%;
+}
+
+.innerContainer {
+  padding: 20px 0;
+}
+
+/* BACK INTERACTION ACTION */
+.backBtn {
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 24px !important;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease !important;
+}
+
+.backBtn:hover {
+  color: #4f46e5 !important;
+  transform: translateX(-4px);
+  background: transparent !important;
+}
+
+/* CENTRAL CARD OVERVIEW SHEET */
+.detailCard {
+  background: var(--bg-main) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 40px var(--shadow-color) !important;
+  overflow: hidden;
+}
+
+.cardContent {
+  padding: 40px !important;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 24px;
+}
+
+.projectTitle {
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  color: var(--text-main);
+  line-height: 1.2 !important;
+}
+
+/* STATUS CHIP UTILITY */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  color: #06b6d4;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badgeIcon {
+  font-size: 14px;
+}
+
+/* CORE ARCHITECTURAL DETAILS SPLIT GRID */
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 16px;
+}
+
+.metaIcon {
+  font-size: 22px;
+  color: #4f46e5;
+}
+
+.metaLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metaValue {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 2px;
+}
+
+/* SYNOPSIS BODY STYLINGS */
+.sectionHeader {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--text-main);
+  margin-bottom: 12px !important;
+}
+
+.projectDesc {
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: var(--text-muted);
+}
+
+/* FALLBACK ERROR BLOCK HANDLING */
+.errorWrapper {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.errorText {
+  color: var(--text-main);
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+}
+
+@media (max-width: 600px) {
+  .cardContent {
+    padding: 24px !important;
+  }
+  .projectTitle {
+    font-size: 26px !important;
+  }
+  .metaGrid {
+    grid-template-columns: 1fr;
+  }
+}

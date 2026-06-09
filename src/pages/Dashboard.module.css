@@ -1,0 +1,256 @@
+.wrapper {
+  position: relative;
+  overflow-x: hidden;
+  background: var(--bg-main);
+  min-height: 100vh;
+  transition: background-color 0.4s ease;
+}
+
+.contentContainer {
+  padding-top: 140px;
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Background Atmosphere Lights */
+.blob1,
+.blob2 {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  filter: blur(150px);
+  opacity: 0.14;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob1 {
+  background: radial-gradient(#4f46e5, transparent 70%);
+  top: 5%;
+  right: -5%;
+}
+
+.blob2 {
+  background: radial-gradient(#06b6d4, transparent 70%);
+  bottom: 10%;
+  left: -5%;
+}
+
+/* HEADER LAYER */
+.headerSection {
+  margin-bottom: 40px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: #4f46e5;
+  border-radius: 30px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  margin-bottom: 16px !important;
+}
+
+.title {
+  font-size: 48px !important;
+  font-weight: 800 !important;
+  color: var(--text-main);
+  margin-bottom: 16px !important;
+}
+
+.desc {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+/* CONSOLE MANAGEMENT CARD BLOCK */
+.controlPanelCard {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  margin-bottom: 48px;
+}
+
+.panelContent {
+  padding: 24px !important;
+}
+
+.alert {
+  border-radius: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.inputFormRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* INPUT COMPONENT DYNAMIC MODIFIERS */
+.textField :global(.MuiInputBase-root) {
+  color: var(--text-main) !important;
+  border-radius: 12px !important;
+}
+
+.textField :global(.MuiOutlinedInput-notchedOutline) {
+  border-color: var(--border-color) !important;
+}
+
+.textField:hover :global(.MuiOutlinedInput-notchedOutline) {
+  border-color: rgba(99, 102, 241, 0.4) !important;
+}
+
+.textField :global(.Mui-focused .MuiOutlinedInput-notchedOutline) {
+  border-color: #4f46e5 !important;
+}
+
+.textField :global(.MuiInputLabel-root) {
+  color: var(--text-muted) !important;
+}
+
+/* CONSOLE CONTROL BUTTON ACTIONS */
+.addBtn,
+.updateBtn {
+  text-transform: none !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  padding: 14px 28px !important;
+  box-shadow: none !important;
+  height: 56px;
+}
+
+.addBtn {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4) !important;
+  color: white !important;
+}
+
+.updateBtn {
+  background: #0284c7 !important;
+  color: white !important;
+}
+
+/* EQUAL SIZE RESPONSIVE GRID CONFIGURATION */
+.gridWrapper {
+  position: relative;
+}
+
+.motionCardContainer {
+  height: 100%;
+  display: flex;
+}
+
+.projectCard {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 24px !important;
+  box-shadow: none !important;
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+
+.projectCard:hover {
+  border-color: rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 12px 35px var(--shadow-color) !important;
+}
+
+.cardContent {
+  padding: 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.cardTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(99, 102, 241, 0.08);
+  border-radius: 12px;
+  color: #4f46e5;
+  font-size: 18px;
+}
+
+.idTag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-main);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  letter-spacing: 0.5px;
+}
+
+.projectTitle {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--text-main);
+  margin-bottom: 24px !important;
+  flex-grow: 1; /* Anchors height so layout text spaces identically */
+}
+
+/* DUAL OPERATIONAL ACTION BUTTON GROUP */
+.actionButtonGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.editBtn,
+.deleteBtn {
+  flex: 1;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  padding: 8px 16px !important;
+}
+
+.editBtn {
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+.editBtn:hover {
+  background: var(--bg-main) !important;
+  border-color: var(--text-muted) !important;
+}
+
+.deleteBtn {
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 36px !important;
+  }
+  .inputFormRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .addBtn,
+  .updateBtn {
+    height: 50px;
+  }
+}
