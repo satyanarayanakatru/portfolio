@@ -50,6 +50,7 @@
   font-weight: 800;
   letter-spacing: 1px;
   background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   z-index: 2100; /* Keeps logo on top if needed */
